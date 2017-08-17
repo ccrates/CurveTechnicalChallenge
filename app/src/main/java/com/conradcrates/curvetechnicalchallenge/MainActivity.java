@@ -25,8 +25,8 @@ public class MainActivity extends AppCompatActivity implements Observer{
         result = (TextView)findViewById(R.id.text_sum);
 
         List<Double> values = new ArrayList<>();
-        for(int i = 0; i < 6; i++){
-            values.add(0d);
+        for(double i = 0; i < 6; i++){
+            values.add(i);
         }
 
         viewModel = new MainActivityViewModel(values, new SumModel());
@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity implements Observer{
         for(int i = 0; i < values.size(); i++){
             EditText et = new EditText(this);
             et.setInputType(InputType.TYPE_CLASS_NUMBER);
+            et.setText("" + values.get(i));
             et.addTextChangedListener(viewModel.getTextWatcher(i));
 
             GridLayout.LayoutParams params = new GridLayout.LayoutParams();
@@ -43,6 +44,8 @@ public class MainActivity extends AppCompatActivity implements Observer{
             et.setLayoutParams(params);
             layout.addView(et);
         }
+
+        viewModel.initialise();
     }
 
     @Override

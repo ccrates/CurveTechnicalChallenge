@@ -20,6 +20,11 @@ public class MainActivityViewModel extends Observable{
         this.model = model;
     }
 
+    public void initialise(){
+        setChanged();
+        notifyObservers(model.doCalculations(values));
+    }
+
     public TextWatcher getTextWatcher(final int index){
         return new TextWatcher() {
             @Override
@@ -35,7 +40,10 @@ public class MainActivityViewModel extends Observable{
             @Override
             public void afterTextChanged(Editable editable) {
                 try{
-                    double newValue = Double.parseDouble(editable.toString());
+                    double newValue = 0;
+                    if(editable != null && !editable.toString().isEmpty()) {
+                        newValue = Double.parseDouble(editable.toString());
+                    }
                     values.set(index, newValue);
                     setChanged();
                     notifyObservers(model.doCalculations(values));
