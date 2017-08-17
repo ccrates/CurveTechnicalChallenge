@@ -16,7 +16,7 @@ public class ProductModelUnitTests {
     @Test
     public void productModelMultipliesValuesCorrectly(){
         List<Double> values = new ArrayList<>();
-        for(double i = 0; i < 6; i++){
+        for(double i = 0; i < 5; i++){
             values.add(i+1);
         }
 

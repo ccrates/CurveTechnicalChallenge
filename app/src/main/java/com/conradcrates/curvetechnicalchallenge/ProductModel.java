@@ -10,6 +10,10 @@ public class ProductModel implements CalculationModel{
 
     @Override
     public double doCalculations(List<Double> values) {
-        return 0;
+        double total = values.get(0);
+        for(int i = 1; i < values.size(); i++){
+            total = total * values.get(i);
+        }
+        return total;
     }
 }

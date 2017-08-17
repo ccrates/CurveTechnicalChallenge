@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity implements Observer{
             values.add(0d);
         }
 
-        viewModel = new MainActivityViewModel(values, new SumModel());
+        viewModel = new MainActivityViewModel(values, new ProductModel());
         viewModel.addObserver(this);
 
         for(int i = 0; i < values.size(); i++){
@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity implements Observer{
             et.setInputType(InputType.TYPE_CLASS_NUMBER);
             et.addTextChangedListener(viewModel.getTextWatcher(i));
 
-            GridLayout.LayoutParams params =new GridLayout.LayoutParams();
+            GridLayout.LayoutParams params = new GridLayout.LayoutParams();
             params.height = GridLayout.LayoutParams.WRAP_CONTENT;
             params.width = 500;
             et.setLayoutParams(params);
