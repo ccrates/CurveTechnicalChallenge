@@ -9,6 +9,10 @@ import java.util.List;
 public class SumModel {
 
     public int sum(List<Integer> values){
-        return 0;
+        int total = 0;
+        for(int value : values){
+            total += value;
+        }
+        return total;
     }
 }
