@@ -12,7 +12,7 @@ import static org.junit.Assert.*;
  *
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
-public class ExampleUnitTest {
+public class SumModelUnitTests {
 
     @Test
     public void sumModelAddsValuesCorrectly(){
@@ -24,5 +24,18 @@ public class ExampleUnitTest {
         SumModel model = new SumModel();
         int result = model.sum(values);
         assertEquals(15, result);
+    }
+
+    @Test
+    public void sumModelAddsDifferentNumberOfValuesCorrectlyWithNegatives(){
+        List<Integer> values = new ArrayList<>();
+        values.add(1);
+        values.add(-1);
+        values.add(5);
+        values.add(-2);
+
+        SumModel model = new SumModel();
+        int result = model.sum(values);
+        assertEquals(3, result);
     }
 }
