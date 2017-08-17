@@ -9,8 +9,8 @@ import java.util.List;
 public class ProductModel implements CalculationModel{
 
     @Override
-    public double doCalculations(List<Double> values) {
-        double total = values.get(0);
+    public int doCalculations(List<Integer> values) {
+        int total = values.get(0);
         for(int i = 1; i < values.size(); i++){
             total = total * values.get(i);
         }

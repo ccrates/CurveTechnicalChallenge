@@ -8,9 +8,9 @@ import java.util.List;
 
 public class SumModel implements CalculationModel{
 
-    public double doCalculations(List<Double> values){
+    public int doCalculations(List<Integer> values){
         int total = 0;
-        for(double value : values){
+        for(int value : values){
             total += value;
         }
         return total;

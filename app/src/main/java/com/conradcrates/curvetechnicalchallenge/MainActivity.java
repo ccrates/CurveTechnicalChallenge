@@ -24,8 +24,8 @@ public class MainActivity extends AppCompatActivity implements Observer{
         GridLayout layout = (GridLayout)findViewById(R.id.layout_grid);
         result = (TextView)findViewById(R.id.text_sum);
 
-        List<Double> values = new ArrayList<>();
-        for(double i = 0; i < 6; i++){
+        List<Integer> values = new ArrayList<>();
+        for(int i = 0; i < 6; i++){
             values.add(i);
         }
 

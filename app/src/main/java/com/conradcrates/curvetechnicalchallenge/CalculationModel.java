@@ -8,5 +8,5 @@ import java.util.List;
 
 public interface CalculationModel {
 
-    double doCalculations(List<Double> values);
+    int doCalculations(List<Integer> values);
 }

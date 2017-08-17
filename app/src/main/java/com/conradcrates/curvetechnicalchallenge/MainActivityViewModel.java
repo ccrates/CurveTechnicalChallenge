@@ -12,10 +12,10 @@ import java.util.Observable;
 
 public class MainActivityViewModel extends Observable{
 
-    private List<Double> values;
+    private List<Integer> values;
     private CalculationModel model;
 
-    public MainActivityViewModel(List<Double> values, CalculationModel model){
+    public MainActivityViewModel(List<Integer> values, CalculationModel model){
         this.values = values;
         this.model = model;
     }
@@ -40,9 +40,9 @@ public class MainActivityViewModel extends Observable{
             @Override
             public void afterTextChanged(Editable editable) {
                 try{
-                    double newValue = 0;
+                    int newValue = 0;
                     if(editable != null && !editable.toString().isEmpty()) {
-                        newValue = Double.parseDouble(editable.toString());
+                        newValue = Integer.parseInt(editable.toString());
                     }
                     values.set(index, newValue);
                     setChanged();

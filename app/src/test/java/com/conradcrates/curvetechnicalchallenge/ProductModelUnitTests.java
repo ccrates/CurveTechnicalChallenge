@@ -15,13 +15,13 @@ public class ProductModelUnitTests {
 
     @Test
     public void productModelMultipliesValuesCorrectly(){
-        List<Double> values = new ArrayList<>();
-        for(double i = 0; i < 5; i++){
+        List<Integer> values = new ArrayList<>();
+        for(int i = 0; i < 5; i++){
             values.add(i+1);
         }
 
         ProductModel model = new ProductModel();
-        double result = model.doCalculations(values);
-        assertEquals(120,result,0);
+        int result = model.doCalculations(values);
+        assertEquals(120,result);
     }
 }
