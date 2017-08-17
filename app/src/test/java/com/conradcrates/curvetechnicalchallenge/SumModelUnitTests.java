@@ -16,26 +16,26 @@ public class SumModelUnitTests {
 
     @Test
     public void sumModelAddsValuesCorrectly(){
-        List<Integer> values = new ArrayList<>();
-        for(int i = 1; i < 6; i++){
+        List<Double> values = new ArrayList<>();
+        for(double i = 1; i < 6; i++){
             values.add(i);
         }
 
         SumModel model = new SumModel();
-        int result = model.sum(values);
-        assertEquals(15, result);
+        double result = model.doCalculations(values);
+        assertEquals(15, result, 0);
     }
 
     @Test
     public void sumModelAddsDifferentNumberOfValuesCorrectlyWithNegatives(){
-        List<Integer> values = new ArrayList<>();
-        values.add(1);
-        values.add(-1);
-        values.add(5);
-        values.add(-2);
+        List<Double> values = new ArrayList<>();
+        values.add(1d);
+        values.add(-1d);
+        values.add(5d);
+        values.add(-2d);
 
         SumModel model = new SumModel();
-        int result = model.sum(values);
-        assertEquals(3, result);
+        double result = model.doCalculations(values);
+        assertEquals(3, result, 0);
     }
 }

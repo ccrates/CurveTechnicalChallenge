@@ -12,10 +12,10 @@ import java.util.Observable;
 
 public class MainActivityViewModel extends Observable{
 
-    private List<Integer> values;
-    private SumModel model;
+    private List<Double> values;
+    private CalculationModel model;
 
-    public MainActivityViewModel(List<Integer> values, SumModel model){
+    public MainActivityViewModel(List<Double> values, CalculationModel model){
         this.values = values;
         this.model = model;
     }
@@ -35,10 +35,10 @@ public class MainActivityViewModel extends Observable{
             @Override
             public void afterTextChanged(Editable editable) {
                 try{
-                    int newValue = Integer.parseInt(editable.toString());
+                    double newValue = Double.parseDouble(editable.toString());
                     values.set(index, newValue);
                     setChanged();
-                    notifyObservers(model.sum(values));
+                    notifyObservers(model.doCalculations(values));
                 } catch (Exception e){
                     e.printStackTrace();
                 }

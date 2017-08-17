@@ -6,11 +6,11 @@ import java.util.List;
  * Created by Conrad on 17/08/2017.
  */
 
-public class SumModel {
+public class SumModel implements CalculationModel{
 
-    public int sum(List<Integer> values){
+    public double doCalculations(List<Double> values){
         int total = 0;
-        for(int value : values){
+        for(double value : values){
             total += value;
         }
         return total;
