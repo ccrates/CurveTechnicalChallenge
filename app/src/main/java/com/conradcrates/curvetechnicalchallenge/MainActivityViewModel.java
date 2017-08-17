@@ -4,12 +4,13 @@ import android.text.Editable;
 import android.text.TextWatcher;
 
 import java.util.List;
+import java.util.Observable;
 
 /**
  * Created by Conrad on 17/08/2017.
  */
 
-public class MainActivityViewModel {
+public class MainActivityViewModel extends Observable{
 
     private List<Integer> values;
     private SumModel model;
@@ -36,7 +37,8 @@ public class MainActivityViewModel {
                 try{
                     int newValue = Integer.parseInt(editable.toString());
                     values.set(index, newValue);
-                    model.sum(values);
+                    setChanged();
+                    notifyObservers(model.sum(values));
                 } catch (Exception e){
                     e.printStackTrace();
                 }
