@@ -8,6 +8,7 @@ import java.util.List;
 
 public class SumModel implements CalculationModel{
 
+    @Override
     public int doCalculations(List<Integer> values){
         int total = 0;
         for(int value : values){
