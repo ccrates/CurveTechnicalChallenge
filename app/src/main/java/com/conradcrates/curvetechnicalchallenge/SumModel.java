@@ -1,0 +1,14 @@
+package com.conradcrates.curvetechnicalchallenge;
+
+import java.util.List;
+
+/**
+ * Created by Conrad on 17/08/2017.
+ */
+
+public class SumModel {
+
+    public int sum(List<Integer> values){
+        return 0;
+    }
+}
