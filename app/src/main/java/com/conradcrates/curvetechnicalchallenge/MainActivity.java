@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity implements Observer{
             values.add(0d);
         }
 
-        viewModel = new MainActivityViewModel(values, new ProductModel());
+        viewModel = new MainActivityViewModel(values, new SumModel());
         viewModel.addObserver(this);
 
         for(int i = 0; i < values.size(); i++){
