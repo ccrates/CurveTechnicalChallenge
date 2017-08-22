@@ -16,6 +16,7 @@ public class MainActivity extends AppCompatActivity implements Observer{
 
     private MainActivityViewModel viewModel;
     private TextView result;
+    private ArrayList<Integer> values;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,9 +25,13 @@ public class MainActivity extends AppCompatActivity implements Observer{
         GridLayout layout = (GridLayout)findViewById(R.id.layout_grid);
         result = (TextView)findViewById(R.id.text_sum);
 
-        List<Integer> values = new ArrayList<>();
-        for(int i = 0; i < 6; i++){
-            values.add(i);
+        if(savedInstanceState != null && savedInstanceState.containsKey("values")){
+            values = savedInstanceState.getIntegerArrayList("values");
+        } else {
+            values = new ArrayList<>();
+            for (int i = 0; i < 6; i++) {
+                values.add(i);
+            }
         }
 
         viewModel = new MainActivityViewModel(values, new SumModel());
@@ -53,5 +58,11 @@ public class MainActivity extends AppCompatActivity implements Observer{
         if(observable instanceof MainActivityViewModel) {
             result.setText(o.toString());
         }
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putIntegerArrayList("values", values);
     }
 }
