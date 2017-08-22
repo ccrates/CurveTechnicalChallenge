@@ -1,19 +1,21 @@
 package com.conradcrates.curvetechnicalchallenge;
 
+import android.databinding.BaseObservable;
+import android.databinding.Bindable;
 import android.text.Editable;
 import android.text.TextWatcher;
 
 import java.util.List;
-import java.util.Observable;
 
 /**
  * Created by Conrad on 17/08/2017.
  */
 
-public class MainActivityViewModel extends Observable{
+public class MainActivityViewModel extends BaseObservable{
 
     private List<Integer> values;
     private CalculationModel model;
+    private int result;
 
     public MainActivityViewModel(List<Integer> values, CalculationModel model){
         this.values = values;
@@ -21,8 +23,7 @@ public class MainActivityViewModel extends Observable{
     }
 
     public void initialise(){
-        setChanged();
-        notifyObservers(model.doCalculations(values));
+        setResult(model.doCalculations(values));
     }
 
     public TextWatcher getTextWatcher(final int index){
@@ -45,12 +46,21 @@ public class MainActivityViewModel extends Observable{
                         newValue = Integer.parseInt(editable.toString());
                     }
                     values.set(index, newValue);
-                    setChanged();
-                    notifyObservers(model.doCalculations(values));
+                    setResult(model.doCalculations(values));
                 } catch (Exception e){
                     e.printStackTrace();
                 }
             }
         };
+    }
+
+    public void setResult(int result) {
+        this.result = result;
+        notifyPropertyChanged(BR.result);
+    }
+
+    @Bindable
+    public String getResult(){
+        return "" + result;
     }
 }

@@ -1,18 +1,18 @@
 package com.conradcrates.curvetechnicalchallenge;
 
-import android.support.v7.app.AppCompatActivity;
+import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.text.InputType;
 import android.widget.EditText;
 import android.widget.GridLayout;
 import android.widget.TextView;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Observable;
-import java.util.Observer;
+import com.conradcrates.curvetechnicalchallenge.databinding.ActivityMainBinding;
 
-public class MainActivity extends AppCompatActivity implements Observer{
+import java.util.ArrayList;
+
+public class MainActivity extends AppCompatActivity{
 
     private MainActivityViewModel viewModel;
     private TextView result;
@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity implements Observer{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        ActivityMainBinding binding =  DataBindingUtil.setContentView(this, R.layout.activity_main);
         GridLayout layout = (GridLayout)findViewById(R.id.layout_grid);
         result = (TextView)findViewById(R.id.text_sum);
 
@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity implements Observer{
         }
 
         viewModel = new MainActivityViewModel(values, new SumModel());
-        viewModel.addObserver(this);
+        binding.setViewModel(viewModel);
 
         for(int i = 0; i < values.size(); i++){
             EditText et = new EditText(this);
@@ -51,13 +51,6 @@ public class MainActivity extends AppCompatActivity implements Observer{
         }
 
         viewModel.initialise();
-    }
-
-    @Override
-    public void update(Observable observable, Object o) {
-        if(observable instanceof MainActivityViewModel) {
-            result.setText(o.toString());
-        }
     }
 
     @Override
